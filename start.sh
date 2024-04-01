@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DISCORD_WEBHOOK="https://discord.com/api/webhooks/1223572472096620555/03KZivChR8PJIMgXCC_jo2aBTKxXvdfBIs1-0bO3QnFZPYS_Nx_bjMFd2WU4tpLI-5K7"
+DISCORD_WEBHOOK=""
 
 send_webhook_message() {
     local description="$1"

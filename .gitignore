@@ -1,0 +1,18 @@
+build/
+frontend_release_build/
+node_modules/
+.vs/
+
+rrolf-client
+rrolf-client.wasm
+database.json
+logs.txt
+
+### Rivet ###
+.rivet/
+.env
+
+
+# Added by cargo
+target/
+

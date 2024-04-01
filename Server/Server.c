@@ -403,7 +403,7 @@ static int handle_lws_event(struct rr_server *this, struct lws *ws,
                 }
             }
 #endif
-            if (proto_bug_read_varuint(&encoder, "dev_flag") == 58725374961)
+            if (proto_bug_read_varuint(&encoder, "dev_flag") == 832736234)
                 client->dev = 1;
 
 #ifdef RIVET_BUILD

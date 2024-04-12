@@ -1,3 +1,18 @@
+// Copyright (C) 2024  Paul Johnson
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 #pragma once
 
 #include <stdint.h>
@@ -45,7 +60,7 @@ enum rr_clientbound_packet_header
 enum rr_biome_id
 {
     rr_biome_id_hell_creek,
-    rr_biome_id_garden,
+    rr_biome_id_ocean,
     rr_biome_id_beehive,
     rr_biome_id_max
 };
@@ -72,7 +87,7 @@ enum rr_petal_id
     rr_petal_id_stinger,
     rr_petal_id_light,
     rr_petal_id_shell,
-    rr_petal_id_peas, 
+    rr_petal_id_peas,
     rr_petal_id_leaf,
     rr_petal_id_egg,
     rr_petal_id_magnet,
@@ -93,7 +108,10 @@ enum rr_petal_id
     rr_petal_id_wax,
     rr_petal_id_sand,
     rr_petal_id_mint,
-
+    rr_petal_id_cactus,
+    rr_petal_id_gold,
+    rr_petal_id_rice,
+    rr_petal_id_horn,
     rr_petal_id_max
 };
 
@@ -111,15 +129,17 @@ enum rr_mob_id
     rr_mob_id_meteor,
     rr_mob_id_quetzalcoatlus,
     rr_mob_id_edmontosaurus,
-
-    rr_mob_id_ant,
-    rr_mob_id_hornet,
-    rr_mob_id_dragonfly,
-    rr_mob_id_honeybee,
+    rr_mob_id_kelp,
+    rr_mob_id_seagull,
+    rr_mob_id_kingmackarel,
+    rr_mob_id_seasnail,
     rr_mob_id_beehive,
+    rr_mob_id_ant,
     rr_mob_id_spider,
+    rr_mob_id_honeybee,
+    rr_mob_id_dragonfly,
+    rr_mob_id_hornet,
     rr_mob_id_house_centipede,
-    rr_mob_id_lanternfly,
     rr_mob_id_max
 };
 
@@ -186,8 +206,7 @@ extern double RR_MOB_WAVE_RARITY_COEFFICIENTS[rr_rarity_id_max + 1];
 
 extern uint32_t RR_MOB_DIFFICULTY_COEFFICIENTS[rr_mob_id_max];
 extern double RR_HELL_CREEK_MOB_ID_RARITY_COEFFICIENTS[rr_mob_id_max];
-extern double RR_GARDEN_MOB_ID_RARITY_COEFFICIENTS[rr_mob_id_max];
-
+extern double RR_OCEAN_MOB_ID_RARITY_COEFFICIENTS[rr_mob_id_max];
 
 extern uint32_t RR_RARITY_COLORS[rr_rarity_id_max];
 extern char const *RR_RARITY_NAMES[rr_rarity_id_max];
@@ -220,12 +239,13 @@ struct rr_maze_declaration
     struct rr_spawn_zone spawn_zones[4];
 };
 
-#define RR_DECLARE_MAZE(name, size) \
-extern uint8_t RR_MAZE_TEMPLATE_##name[size/2][size/2]; \
-extern struct rr_maze_grid RR_MAZE_##name[size][size];
+#define RR_DECLARE_MAZE(name, size)                                            \
+    extern uint8_t RR_MAZE_TEMPLATE_##name[size / 2][size / 2];                \
+    extern struct rr_maze_grid RR_MAZE_##name[size][size];
 
 // RR_DECLARE_MAZE(HELL_CREEK, 54)
 RR_DECLARE_MAZE(HELL_CREEK, 80)
+RR_DECLARE_MAZE(OCEAN, 80)
 RR_DECLARE_MAZE(BURROW, 4)
 
 extern struct rr_maze_declaration RR_MAZES[rr_biome_id_max];
